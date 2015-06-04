@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppStoreService", "AppStoreService\AppStoreService.csproj", "{E2112CA4-A326-4E24-9884-0C28A541957B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopersService", "DevelopersService\DevelopersService.csproj", "{359A4A99-F7A7-40F4-B15B-92A924F36A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcsMock", "OcsMock\OcsMock.csproj", "{E91E78B6-9021-4E76-A7D7-E606129E19FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E2112CA4-A326-4E24-9884-0C28A541957B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2112CA4-A326-4E24-9884-0C28A541957B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2112CA4-A326-4E24-9884-0C28A541957B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359A4A99-F7A7-40F4-B15B-92A924F36A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359A4A99-F7A7-40F4-B15B-92A924F36A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359A4A99-F7A7-40F4-B15B-92A924F36A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359A4A99-F7A7-40F4-B15B-92A924F36A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E91E78B6-9021-4E76-A7D7-E606129E19FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E91E78B6-9021-4E76-A7D7-E606129E19FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E91E78B6-9021-4E76-A7D7-E606129E19FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E91E78B6-9021-4E76-A7D7-E606129E19FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
