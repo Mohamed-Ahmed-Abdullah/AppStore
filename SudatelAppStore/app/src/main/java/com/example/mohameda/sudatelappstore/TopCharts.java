@@ -1,6 +1,8 @@
 package com.example.mohameda.sudatelappstore;
 
 import android.app.Activity;
+import android.net.http.AndroidHttpClient;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +20,17 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class TopCharts extends ActionBarActivity
@@ -45,6 +59,8 @@ public class TopCharts extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        new HttpRequestTask().execute("http://172.16.110.59/AppStore/Service1.svc/Service1/GetData?value=1");
     }
 
     @Override
@@ -145,5 +161,50 @@ public class TopCharts extends ActionBarActivity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+
+    private class HttpRequestTask extends AsyncTask<String, Void, HttpResponse> {
+        @Override
+        protected HttpResponse doInBackground(String... params) {
+            String link = params[0];
+            HttpGet request = new HttpGet(link);
+            AndroidHttpClient client = AndroidHttpClient.newInstance("Android");
+            try {
+                return client.execute(request);
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(HttpResponse result) {
+            //Toast.makeText()
+            HttpEntity entity = result.getEntity();
+            Toast bread = null;
+            try {
+                bread = Toast.makeText(getApplicationContext(), EntityUtils.toString(entity), Toast.LENGTH_LONG);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bread.show();
+        }
+    }
+
+
+    public class Greeting {
+
+        private String id;
+        private String content;
+
+        public String getId() {
+            return this.id;
+        }
+
+        public String getContent() {
+            return this.content;
+        }
+
+    }
+
 
 }
